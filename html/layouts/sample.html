@@ -1,0 +1,162 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Rakshana Television</title>
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/7.0.1/css/all.min.css">
+  <style>
+    body {
+      margin: 0;
+      font-family: Arial, sans-serif;
+      color: white;
+    }
+
+    header {
+      position: absolute;
+      top: 0;
+      left: 0;
+      width: 100%;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      padding: 15px 50px;
+      z-index: 10;
+    }
+
+    nav ul {
+      display: flex;
+      list-style: none;
+      margin: 0;
+      padding: 0;
+      gap: 30px;
+    }
+
+    nav a {
+      color: white;
+      text-decoration: none;
+      font-weight: 500;
+    }
+
+    .cta-buttons {
+      display: flex;
+      gap: 15px;
+    }
+
+    .cta-buttons button {
+      border: none;
+      padding: 10px 20px;
+      border-radius: 25px;
+      cursor: pointer;
+      font-weight: bold;
+    }
+
+    .contact-btn {
+      background: rgba(255,255,255,0.2);
+      color: white;
+    }
+
+    .donate-btn {
+      background: linear-gradient(to right, #6a11cb, #ff4b2b);
+      color: white;
+    }
+
+    .hero {
+      position: relative;
+      height: 100vh;
+      background: url('https://images.pexels.com/photos/33805238/pexels-photo-33805238.jpeg') center/cover no-repeat;
+      display: flex;
+      align-items: center;
+      justify-content: flex-start;
+      padding: 0 50px;
+    }
+
+    .hero-content {
+      max-width: 600px;
+    }
+
+    .hero h1 {
+      font-size: 2.5rem;
+      margin-bottom: 15px;
+    }
+
+    .hero p {
+      font-size: 1.1rem;
+      margin-bottom: 30px;
+    }
+
+    .watch-btn {
+      background: linear-gradient(to right, #6a11cb, #ff4b2b);
+      border: none;
+      padding: 12px 30px;
+      border-radius: 30px;
+      color: white;
+      font-size: 1rem;
+      cursor: pointer;
+    }
+
+    /* Social Sidebar */
+    .social-sidebar {
+      position: fixed;
+      top: 50%;
+      right: 0;
+      transform: translateY(-50%);
+      display: flex;
+      flex-direction: column;
+      background: black;
+      padding: 10px;
+      border-radius: 5px 0 0 5px;
+      gap: 15px;
+    }
+
+    .social-sidebar a {
+      color: white;
+      font-size: 20px;
+      text-align: center;
+    }
+  </style>
+</head>
+<body>
+
+  <!-- Header -->
+  <header>
+    <div class="logo">
+      <img src="logo.png" alt="Rakshana TV Logo" height="40">
+    </div>
+
+    <nav>
+      <ul>
+        <li><a href="#">Home</a></li>
+        <li><a href="#">About Us</a></li>
+        <li><a href="#">Watch Live</a></li>
+        <li><a href="#">Programs</a></li>
+      </ul>
+    </nav>
+
+    <div class="cta-buttons">
+      <button class="contact-btn">Contact Us</button>
+      <button class="donate-btn">Donate →</button>
+    </div>
+  </header>
+
+  <!-- Hero Section -->
+  <main>
+    <section class="hero">
+      <div class="hero-content">
+        <h1>Rakshana Television – Your Channel for Divine Truth</h1>
+        <p>Tune in for uplifting messages, soulful worship, and life-transforming teachings that strengthen your spirit and empower your journey.</p>
+        <button class="watch-btn">▶ Watch Live</button>
+      </div>
+    </section>
+  </main>
+
+  <!-- Social Sidebar -->
+  <aside class="social-sidebar">
+    <a href="#"><i class="fab fa-facebook-f"></i></a>
+    <a href="#"><i class="fab fa-x-twitter"></i></a>
+    <a href="#"><i class="fab fa-youtube"></i></a>
+    <a href="#"><i class="fab fa-linkedin-in"></i></a>
+  </aside>
+
+</body>
+</html>

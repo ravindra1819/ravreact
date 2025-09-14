@@ -1,0 +1,113 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN"
+    "http://www.w3.org/TR/html4/loose.dtd">
+<html>
+<head>
+    <title>HTML4 Layout</title>
+    <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/7.0.1/css/all.min.css" type="text/css">
+
+    <style type="text/css">
+        body {
+            margin: 0;
+            padding: 0;
+            font-family: Arial, sans-serif;
+        }
+
+        a {
+            text-decoration: none;
+            color: black;
+        }
+
+        /* Promotional Banner */
+        .promotionalBanner {
+            background-color: black;
+            color: white;
+            text-align: center;
+            padding: 15px;
+            position: relative;
+        }
+        .promotionalBanner .closeBtn {
+            position: absolute;
+            right: 15px;
+            top: 50%;
+            transform: translateY(-50%);
+            font-size: 18px;
+            cursor: pointer;
+            color: white;
+        }
+
+        /* Navbar */
+        .mainNavbar {
+            display: flex;
+            align-items: center;
+            justify-content: space-evenly;
+            border-bottom: 1px solid lightgrey;
+        }
+        .navList {
+            display: flex;
+            gap: 60px;
+            list-style: none;
+            padding: 0;
+            margin: 0;
+        }
+
+        .svg-max-icon {
+            fill: red;
+        }
+
+        .search a {
+            margin-left: 15px;
+        }
+    </style>
+</head>
+<body>
+
+<div class="header">
+
+    <!-- Promotional banner -->
+    <div class="promotionalBanner" id="promoBanner">
+        OnePlus Festive Celebration starts 12AM, 22nd Sept! Your exclusive offers await. Notify Me >>
+        <span class="closeBtn" onclick="closeBanner()">✖</span>
+    </div>
+
+    <!-- Navbar -->
+    <div class="mainNavbar">
+        <div class="logo">
+            <a href="#">
+                <svg style="height: 24px; width:85px; color:red;" class="svg-max-icon"
+                    xmlns="http://www.w3.org/2000/svg" viewBox="0 0 103 24">
+                    <path fill-rule="evenodd" clip-rule="evenodd" d="M.998 3.75V24h20.25V12.438h-2.25v9.312H3.248V6h9.313V3.75H.998zM18.996 0v3.75h-3.75V6h3.75v3.75h2.25V6h3.75V3.75h-3.75V0h-2.25z"></path>
+                    <path fill-rule="evenodd" clip-rule="evenodd" d="M12.56 18.75V8.875h-2c0 .68-.229 1.192-.576 1.496-.362.304-.911.441-1.548.441h-.25v1.626h2.124v6.312h2.25zm23.264-5.087c0-2.278-1.023-4.046-3.116-4.046s-3.163 1.768-3.163 4.046c0 2.263 1.07 4.031 3.163 4.031s3.116-1.768 3.116-4.03z"></path>
+                </svg>
+            </a>
+        </div>
+
+        <div class="navbar">
+            <ul class="navList">
+                <li><a href="#">Link 1</a></li>
+                <li><a href="#">Link 2</a></li>
+                <li><a href="#">Link 3</a></li>
+                <li><a href="#">Link 4</a></li>
+                <li><a href="#">Link 5</a></li>
+                <li><a href="#">Link 6</a></li>
+                <li><a href="#">Link 7</a></li>
+                <li><a href="#">Link 8</a></li>
+            </ul>
+        </div>
+
+        <div class="search cart login">
+            <a href="#"><i class="fa-solid fa-magnifying-glass"></i></a>
+            <a href="#"><i class="fa-solid fa-cart-shopping"></i></a>
+            <a href="#"><i class="fa-solid fa-user"></i></a>
+        </div>
+    </div>
+</div>
+
+<script type="text/javascript">
+function closeBanner() {
+    document.getElementById("promoBanner").style.display = "none";
+}
+</script>
+
+</body>
+</html>
