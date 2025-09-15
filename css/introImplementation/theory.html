@@ -1,0 +1,121 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>CSS Theory</title>
+    <style>
+        body {
+            font-family: Arial, Helvetica, sans-serif;
+            margin: 0;
+            padding: 20px;
+            background: #f8f9fa;
+            color: #2c3e50;
+            line-height: 1.6;
+        }
+
+        h1,
+        h2 {
+            text-align: center;
+            color: #1a5276;
+        }
+
+        section {
+            margin: 30px auto;
+            padding: 20px;
+            background: #fff;
+            border-radius: 12px;
+            max-width: 900px;
+            box-shadow: 0px 4px 10px rgba(0, 0, 0, 0.1);
+        }
+
+        ul {
+            margin-left: 20px;
+        }
+
+        a {
+            display: inline-block;
+            margin-top: 20px;
+            text-decoration: none;
+            color: #fff;
+            background: #1a5276;
+            padding: 10px 15px;
+            border-radius: 6px;
+        }
+
+        a:hover {
+            background: #154360;
+        }
+    </style>
+</head>
+
+<body>
+
+    <h1>📘 CSS Introduction & Implementation</h1>
+
+    <!-- Introduction -->
+    <section>
+        <h2>What is CSS?</h2>
+        <p>
+            CSS (Cascading Style Sheets) is a style sheet language used to describe the presentation of a webpage. 
+            While HTML provides the structure of a page, CSS controls its look and feel — such as colors, 
+            layouts, fonts, spacing, and responsiveness.
+        </p>
+        <p>
+            By separating content (HTML) from design (CSS), developers can build modern, 
+            user-friendly, and professional websites.
+        </p>
+    </section>
+
+    <!-- Advantages -->
+    <section>
+        <h2>✨ Advantages of CSS</h2>
+        <ul>
+            <li><strong>Separation of content and design:</strong> HTML handles structure, CSS handles presentation.</li>
+            <li><strong>Reusability:</strong> One stylesheet can be used across multiple pages.</li>
+            <li><strong>Maintainability:</strong> Easy to update styles in one place.</li>
+            <li><strong>Improved user experience:</strong> Helps create responsive, attractive designs.</li>
+        </ul>
+    </section>
+
+    <!-- Implementation -->
+    <section>
+        <h2>⚡ Types of CSS Implementation</h2>
+        <ol>
+            <li>
+                <strong>Inline CSS:</strong>
+                <ul>
+                    <li>Written inside the HTML element using the <code>style</code> attribute.</li>
+                    <li>Has the <em>highest priority</em>.</li>
+                    <li>Best for quick fixes, not suitable for large projects.</li>
+                </ul>
+            </li>
+            <br>
+            <li>
+                <strong>Internal CSS:</strong>
+                <ul>
+                    <li>Written inside the <code>&lt;style&gt;</code> tag within the <code>&lt;head&gt;</code> section.</li>
+                    <li>Useful for applying styles to a single page.</li>
+                </ul>
+            </li>
+            <br>
+            <li>
+                <strong>External CSS:</strong>
+                <ul>
+                    <li>Written in a separate <code>.css</code> file.</li>
+                    <li>Linked to HTML using the <code>&lt;link&gt;</code> tag.</li>
+                    <li>Best practice for large projects since it can be reused across multiple pages.</li>
+                </ul>
+            </li>
+        </ol>
+    </section>
+
+    <!-- Navigation -->
+    <section style="text-align: center;">
+        <a href="index.html">⬅ Back to Practical Examples</a>
+    </section>
+
+</body>
+
+</html>

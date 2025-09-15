@@ -1,0 +1,107 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>CSS Introduction & Implementation</title>
+
+    <!-- External CSS -->
+    <link rel="stylesheet" href="./style.css">
+
+    <!-- Internal CSS -->
+    <style>
+        body {
+            font-family: Arial, Helvetica, sans-serif;
+            margin: 0;
+            padding: 20px;
+            background: #f5f5f5;
+            color: #333;
+        }
+
+        h1,
+        h2 {
+            text-align: center;
+            color: #2c3e50;
+        }
+
+        section {
+            margin: 30px auto;
+            padding: 20px;
+            background: #fff;
+            border-radius: 12px;
+            max-width: 800px;
+            box-shadow: 0px 4px 10px rgba(0, 0, 0, 0.1);
+        }
+
+        .intro {
+            background: #ecf0f1;
+            color: #2c3e50;
+            line-height: 1.6;
+        }
+
+        .inline-example p {
+            color: red;
+            background-color: black;
+            text-align: center;
+        }
+    </style>
+</head>
+
+<body>
+
+    <h1>🌐 CSS Introduction & Implementation</h1>
+
+    <!-- Introduction Section -->
+    <section class="intro">
+        <h2>What is CSS?</h2>
+        <p>
+            CSS (Cascading Style Sheets) is a language used to describe the presentation of a webpage. 
+            While HTML provides the structure of a page, CSS controls its design — such as colors, 
+            layouts, fonts, and responsiveness.
+        </p>
+        <p>
+            By separating content (HTML) from design (CSS), developers can create 
+            modern, professional, and user-friendly websites.
+        </p>
+    </section>
+
+    <!-- Inline CSS -->
+    <section class="inline-example">
+        <h2>1️⃣ Inline CSS</h2>
+        <p style="color: red; background-color: black; text-align: center;">This is inline styling</p>
+        <p style="color: red; background-color: black; text-align: center;">This is inline styling</p>
+        <p style="color: red; background-color: black; text-align: center;">This is inline styling</p>
+    </section>
+
+    <!-- Internal CSS -->
+    <section>
+        <h2>2️⃣ Internal CSS</h2>
+        <p>This is Internal styling</p>
+        <p>This is Internal styling</p>
+        <p>This is Internal styling</p>
+    </section>
+
+    <!-- External CSS -->
+    <section>
+        <h2>3️⃣ External CSS</h2>
+        <ul class="navList">
+            <li>This is external styling</li>
+            <li>This is external styling</li>
+            <li>This is external styling</li>
+            <li>This is external styling</li>
+        </ul>
+
+        <p>This is external styling</p>
+        <p>This is external styling</p>
+        <p>This is external styling</p>
+    </section>
+
+    <section>
+        <h2>📄 Navigate</h2>
+        <p><a href="home.html">Go to Home Page Example ➝</a></p>
+    </section>
+
+</body>
+
+</html>

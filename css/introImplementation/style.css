@@ -1,0 +1,110 @@
+ /* 
+    CSS Introduction : 
+
+    CSS stands for Cascading style Sheets
+    CSS helps us to style the html element in a webpage to make attractive and userfriendly.
+
+
+    Implementation : 
+        - Inline - we'll write inside opening tag using style attribute
+        - Internal - we'll  write inside head section using style tag
+        - External - we'll create a seperate css stylesheet and then link them with multipages using link tag. */
+
+        
+
+        
+ /* ===============================
+   External CSS Styles
+   ===============================  */
+
+li {
+    background-color: slategrey;
+    color: white;
+    padding: 8px;
+    margin: 5px 0;
+    border-radius: 6px;
+    text-align: center;
+}
+
+p {
+    color: yellow;
+    background-color: black;
+    padding: 8px;
+    border-radius: 6px;
+}
+
+
+ /* ============================================
+   📘 CSS PRIORITY & PREFERENCE - THEORY NOTES
+   ============================================
+
+   CSS (Cascading Style Sheets) allows us to style HTML elements. 
+   When multiple styles are applied to the same element, the browser 
+   decides which style to use based on PRIORITY (Cascade rules).
+
+   --------------------------------------------
+   📌 PRIORITY ORDER (Highest → Lowest)
+   --------------------------------------------
+   1. Inline CSS
+   2. Internal CSS
+   3. External CSS
+
+   ✅ Inline has the highest priority
+   ✅ External has the lowest if conflicts occur
+
+   --------------------------------------------
+   ⚡ INLINE vs INTERNAL
+   --------------------------------------------
+   - If both target the same element → INLINE WINS
+
+   Example:
+       <style>
+           p { color: blue; }    Internal 
+       </style>
+       <p style="color: red;">This will be RED (inline wins)</p>
+
+   --------------------------------------------
+   ⚡ INLINE vs EXTERNAL
+   --------------------------------------------
+   - If both target the same element → INLINE WINS
+
+   Example:
+        style.css 
+       p { color: green; }   External 
+
+       HTML:
+       <p style="color: red;">This will be RED (inline wins)</p>
+
+   --------------------------------------------
+   ⚡ INTERNAL vs EXTERNAL
+   --------------------------------------------
+   - If both target the same element → INTERNAL WINS
+
+   Example:
+       style.css 
+       p { color: green; }   External 
+
+       HTML:
+       <style>
+           p { color: blue; }    Internal 
+       </style>
+       <p>This will be BLUE (internal wins)</p>
+
+   --------------------------------------------
+   📌 PREFERENCE IN REAL PROJECTS
+   --------------------------------------------
+   Even though INLINE has the highest priority, developers avoid it:
+   - Makes code messy
+   - Difficult to maintain
+   - Hard to reuse styles
+
+   ✅ Best Practice:
+   - Use EXTERNAL CSS for most projects
+   - Use INTERNAL CSS for small/single-page demos
+   - Use INLINE CSS only for quick fixes/testing
+
+   --------------------------------------------
+   ✅ Final Recommendation:
+   Always PREFER EXTERNAL CSS for clean, scalable, 
+   and professional development.
+   ============================================  */
