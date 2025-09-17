@@ -1,0 +1,46 @@
+/* Universal Selector - * */
+
+*{
+    margin: 0;
+    padding: 0;
+    font-family: 'Times New Roman', Times, serif;
+}
+
+/* Tag Selector - tagName */
+
+/* h3{
+    color: red;
+} */
+
+/* Class Selector - . */
+
+/* .container{
+    background-color: rgb(182, 188, 194);
+    width: 80%;
+    border-radius: 10px;
+    margin: 20px;
+} */
+
+/* Id Selector - # */
+
+/* #headerContainer{
+    background-color: rgb(214, 230, 244);
+} */
+
+/* Descendant Selector - space */
+
+/* article .trip-header p{
+    color: whitesmoke;
+    font-weight: bold;
+    padding: 10px;
+    background-color: grey;
+} */
+
+/* Child Selector - > */
+
+.trip-header>section div>p{
+    color: yellow;
+    font-weight: bold;
+    padding: 10px;
+    background-color: grey;
+} 

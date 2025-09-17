@@ -1,0 +1,309 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>RedBus-Style CSS Selectors Playground (HTML-only)</title>
+  <link rel="stylesheet" href="./main.css">
+  <!-- NOTE: This is PURE HTML markup with semantic structure, IDs, classes, and attributes. No CSS here. -->
+  <!-- Teaching tip: Search for the marker "SELECTOR DEMO" to find spots tailored for each selector type. -->
+</head>
+<body id="page" data-app="redbus-demo" data-env="teaching">
+  <!-- ================= HEADER ================= -->
+  <header id="top" class="site-header" data-fixed="true" role="banner">
+    <div class="container header-container" id="headerContainer">
+      <a class="logo-link" href="#" title="redbus home" aria-label="redbus home">
+        <!-- SELECTOR DEMO: Tag selector (img), attribute selectors [alt], [src^], [src$], [src*] -->
+        <img id="brandLogo" class="logo" src="/assets/images/redBusLogo.png" alt="redbus" width="120" height="28" data-kind="vector" />
+      </a>
+
+      <nav class="primary-nav" id="primaryNav" role="navigation" aria-label="Primary">
+        <ul class="menu" id="mainMenu">
+          <!-- SELECTOR DEMO: Descendant vs child: .menu li a vs .menu > li > a -->
+          <li class="menu-item" data-route="tickets"><a class="menu-link" href="#search">Bus Tickets</a></li>
+          <li class="menu-item" data-route="rpool"><a class="menu-link" href="#rpool">rPool</a></li>
+          <li class="menu-item" data-route="care"><a class="menu-link" href="#safety">Safety+</a></li>
+          <li class="menu-item"><a class="menu-link" href="#help" id="helpLink">Help</a></li>
+        </ul>
+      </nav>
+
+      <div class="auth-actions" id="authActions">
+        <!-- SELECTOR DEMO: Attribute selectors [data-role], [aria-*] -->
+        <button class="btn auth-btn" id="loginBtn" data-role="login" aria-haspopup="dialog">Login</button>
+        <button class="btn auth-btn" id="signupBtn" data-role="signup" aria-haspopup="dialog">Sign Up</button>
+      </div>
+    </div>
+  </header>
+
+  <!-- ================= HERO / SEARCH ================= -->
+  <section id="search" class="hero-search" aria-labelledby="searchTitle">
+    <div class="container hero-container">
+      <h1 id="searchTitle" class="hero-title">Book Bus Tickets</h1>
+      <form id="searchForm" class="search-form" action="#results" method="get" aria-describedby="searchHint">
+        <!-- SELECTOR DEMO: Attribute selectors by [type], [name], [placeholder], [required], [value] -->
+        <div class="field-group" id="fromGroup">
+          <label class="field-label" for="fromCity">From</label>
+          <input id="fromCity" class="input city-input" name="from" type="text" placeholder="Bangalore" required data-field="origin" />
+        </div>
+        <div class="field-group" id="toGroup">
+          <label class="field-label" for="toCity">To</label>
+          <input id="toCity" class="input city-input" name="to" type="text" placeholder="Hyderabad" required data-field="destination" />
+        </div>
+        <div class="field-group" id="dateGroup">
+          <label class="field-label" for="journeyDate">Journey Date</label>
+          <input id="journeyDate" class="input date-input" name="date" type="date" data-field="date" />
+        </div>
+        <div class="field-group" id="returnGroup">
+          <label class="field-label" for="returnDate">Return Date</label>
+          <input id="returnDate" class="input date-input" name="return" type="date" data-field="return-date" />
+        </div>
+        <div class="field-actions">
+          <button id="searchBtn" class="btn search-btn" type="submit" data-action="search">Search Buses</button>
+        </div>
+        <p id="searchHint" class="muted-hint" data-info="help">Tip: Try changing origin/destination to see different results.</p>
+      </form>
+    </div>
+  </section>
+
+  <!-- ================= LAYOUT ================= -->
+  <main id="content" class="page-content" role="main">
+    <div class="container layout" id="layout">
+      <!-- ===== SIDEBAR FILTERS ===== -->
+      <aside id="filters" class="sidebar filters" aria-labelledby="filtersTitle">
+        <h2 id="filtersTitle" class="sidebar-title">Filters</h2>
+
+        <section class="filter-section by-departure" id="filterDeparture" aria-labelledby="filterDepartureTitle">
+          <h3 id="filterDepartureTitle" class="filter-title">Departure Time</h3>
+          <ul class="filter-list time-list">
+            <!-- SELECTOR DEMO: Attribute selector [type="checkbox"], [value^], [value$], [value*] -->
+            <li class="filter-item"><label><input class="chk" type="checkbox" name="dep" value="before-6" /> Before 6 AM</label></li>
+            <li class="filter-item"><label><input class="chk" type="checkbox" name="dep" value="6-12" /> 6 AM – 12 PM</label></li>
+            <li class="filter-item"><label><input class="chk" type="checkbox" name="dep" value="12-18" /> 12 PM – 6 PM</label></li>
+            <li class="filter-item"><label><input class="chk" type="checkbox" name="dep" value="after-18" /> After 6 PM</label></li>
+          </ul>
+        </section>
+
+        <section class="filter-section by-operator" id="filterOperator" aria-labelledby="filterOperatorTitle">
+          <h3 id="filterOperatorTitle" class="filter-title">Operators</h3>
+          <ul class="filter-list operator-list">
+            <li class="filter-item"><label><input class="chk" type="checkbox" name="op" value="srs" /> SRS Travels</label></li>
+            <li class="filter-item"><label><input class="chk" type="checkbox" name="op" value="vrll" /> VRL</label></li>
+            <li class="filter-item"><label><input class="chk" type="checkbox" name="op" value="ksrtc" /> KSRTC</label></li>
+          </ul>
+        </section>
+
+        <section class="filter-section by-features" id="filterFeatures" aria-labelledby="filterFeaturesTitle">
+          <h3 id="filterFeaturesTitle" class="filter-title">Features</h3>
+          <ul class="filter-list feature-list">
+            <li class="filter-item"><label><input class="chk" type="checkbox" name="feat" value="ac" /> A/C</label></li>
+            <li class="filter-item"><label><input class="chk" type="checkbox" name="feat" value="non-ac" /> Non A/C</label></li>
+            <li class="filter-item"><label><input class="chk" type="checkbox" name="feat" value="sleeper" /> Sleeper</label></li>
+            <li class="filter-item"><label><input class="chk" type="checkbox" name="feat" value="seater" /> Seater</label></li>
+            <li class="filter-item"><label><input class="chk" type="checkbox" name="feat" value="wifi" /> Wi‑Fi</label></li>
+          </ul>
+        </section>
+      </aside>
+
+      <!-- ===== RESULTS LIST ===== -->
+      <section id="results" class="results" aria-labelledby="resultsTitle">
+        <h2 id="resultsTitle" class="results-title">Available Buses</h2>
+
+        <!-- Trip Card 1 -->
+        <article class="trip-card" id="trip1" data-operator="SRS" data-rating="4.5" data-price="1299">
+          <p class="bus-type" id="busType1">AC Sleeper (2+1)</p>
+          <header class="trip-header">
+            <h3 class="operator" id="op1">SRS Travels <span class="tag verified" data-badge="verified">Verified</span></h3>
+            <p class="bus-type" id="busType1">AC Sleeper (2+1)</p>
+          </header>
+          <div class="trip-body">
+            <div class="times" id="times1">
+              <time class="depart" datetime="2025-09-16T21:30" data-kind="depart">21:30</time>
+              <span class="arrow" aria-hidden="true">→</span>
+              <time class="arrive" datetime="2025-09-17T07:00" data-kind="arrive">07:00</time>
+            </div>
+            <p class="route" id="route1"><span class="from">Bangalore</span> to <span class="to">Hyderabad</span></p>
+            <ul class="amenities" id="amenities1">
+              <!-- SELECTOR DEMO: Descendant selectors and attribute starts/contains: [data-amenity^], [data-amenity*] -->
+              <li class="amenity" data-amenity="AC">AC</li>
+              <li class="amenity" data-amenity="WiFi">Wi‑Fi</li>
+              <li class="amenity" data-amenity="Blanket">Blanket</li>
+            </ul>
+          </div>
+          <footer class="trip-footer">
+            <div class="rating" id="rating1" aria-label="rating 4.5">4.5</div>
+            <div class="seats" id="seats1" data-available="12">12 Seats Left</div>
+            <div class="price" id="price1" data-currency="INR">₹1299</div>
+            <div class="actions">
+              <a class="btn outline details-link" id="details1" href="#trip1-details" aria-controls="trip1-details">Details</a>
+              <button class="btn book-btn" id="book1" data-trip="1">Book</button>
+            </div>
+          </footer>
+        </article>
+
+        <!-- Trip Card 2 -->
+        <article class="trip-card featured" id="trip2" data-operator="VRL" data-rating="4.2" data-price="999">
+          <header class="trip-header">
+            <h3 class="operator" id="op2">VRL <span class="tag popular" data-badge="popular">Popular</span></h3>
+            <p class="bus-type" id="busType2">Non‑AC Seater (2+2)</p>
+          </header>
+          <div class="trip-body">
+            <div class="times" id="times2">
+              <time class="depart" datetime="2025-09-16T20:00" data-kind="depart">20:00</time>
+              <span class="arrow" aria-hidden="true">→</span>
+              <time class="arrive" datetime="2025-09-17T06:00" data-kind="arrive">06:00</time>
+            </div>
+            <p class="route" id="route2"><span class="from">Bangalore</span> to <span class="to">Hyderabad</span></p>
+            <ul class="amenities" id="amenities2">
+              <li class="amenity" data-amenity="Water">Water Bottle</li>
+              <li class="amenity" data-amenity="Charging">Charging Point</li>
+            </ul>
+          </div>
+          <footer class="trip-footer">
+            <div class="rating" id="rating2" aria-label="rating 4.2">4.2</div>
+            <div class="seats" id="seats2" data-available="4">4 Seats Left</div>
+            <div class="price" id="price2" data-currency="INR">₹999</div>
+            <div class="actions">
+              <a class="btn outline details-link" id="details2" href="#trip2-details" aria-controls="trip2-details">Details</a>
+              <button class="btn book-btn" id="book2" data-trip="2">Book</button>
+            </div>
+          </footer>
+        </article>
+
+        <!-- Trip Card 3 (for sibling selector demos) -->
+        <article class="trip-card" id="trip3" data-operator="KSRTC" data-rating="3.9" data-price="899">
+          <header class="trip-header">
+            <h3 class="operator" id="op3">KSRTC <span class="tag saver" data-badge="saver">Saver</span></h3>
+            <p class="bus-type" id="busType3">AC Seater/Sleeper</p>
+          </header>
+          <div class="trip-body">
+            <div class="times" id="times3">
+              <time class="depart" datetime="2025-09-16T22:15" data-kind="depart">22:15</time>
+              <span class="arrow" aria-hidden="true">→</span>
+              <time class="arrive" datetime="2025-09-17T07:45" data-kind="arrive">07:45</time>
+            </div>
+            <p class="route" id="route3"><span class="from">Bangalore</span> to <span class="to">Hyderabad</span></p>
+          </div>
+          <footer class="trip-footer">
+            <div class="rating" id="rating3" aria-label="rating 3.9">3.9</div>
+            <div class="seats" id="seats3" data-available="20">20 Seats Left</div>
+            <div class="price" id="price3" data-currency="INR">₹899</div>
+            <div class="actions">
+              <a class="btn outline details-link" id="details3" href="#trip3-details" aria-controls="trip3-details">Details</a>
+              <button class="btn book-btn" id="book3" data-trip="3">Book</button>
+            </div>
+          </footer>
+        </article>
+
+        <!-- SELECTOR DEMO: Adjacent and General sibling
+             .notice + .promo  (adjacent)
+             .notice ~ .promo  (general sibling)
+        -->
+        <div class="notice" id="notice">Limited-time offers available on select routes.</div>
+        <div class="promo" id="promo1" data-type="cashback">Cashback 10% with RB Card</div>
+        <div class="promo" id="promo2" data-type="festive">Festive Offer: Flat ₹150 OFF</div>
+
+      </section>
+    </div>
+  </main>
+
+  <!-- ================= DETAIL SECTIONS (for :target, child/descendant demos) ================= -->
+  <section id="trip1-details" class="trip-details" aria-labelledby="trip1-details-title">
+    <h2 id="trip1-details-title">Trip 1 Details</h2>
+    <div class="detail-content">
+      <p class="muted">Boarding points, dropping points, and cancellation policy.</p>
+      <ul class="points-list">
+        <li class="point" data-kind="boarding">Madiwala</li>
+        <li class="point" data-kind="boarding">Silk Board</li>
+        <li class="point" data-kind="dropping">Miyapur</li>
+      </ul>
+    </div>
+  </section>
+
+  <section id="trip2-details" class="trip-details" aria-labelledby="trip2-details-title">
+    <h2 id="trip2-details-title">Trip 2 Details</h2>
+    <div class="detail-content">
+      <p class="muted">Amenities and policies vary by operator.</p>
+      <ol class="policy-list">
+        <li class="policy-item" data-level="strict">No refund within 12 hours of departure</li>
+        <li class="policy-item" data-level="standard">Partial refund before 12 hours</li>
+      </ol>
+    </div>
+  </section>
+
+  <section id="trip3-details" class="trip-details" aria-labelledby="trip3-details-title">
+    <h2 id="trip3-details-title">Trip 3 Details</h2>
+    <div class="detail-content">
+      <p class="muted">Contact customer care for more info.</p>
+      <a class="cta-link" id="contactCare" href="#help">Customer Care</a>
+    </div>
+  </section>
+
+  <!-- ================= FOOTER ================= -->
+  <footer id="siteFooter" class="site-footer" role="contentinfo">
+    <div class="container footer-container">
+      <section class="footer-links" aria-label="Footer Navigation">
+        <!-- SELECTOR DEMO: Grouping selectors .footer-links a, .social-links a -->
+        <a class="footer-link" href="#about" data-link="about">About</a>
+        <a class="footer-link" href="#careers" data-link="careers">Careers</a>
+        <a class="footer-link" href="#terms" data-link="terms">Terms</a>
+        <a class="footer-link" href="#privacy" data-link="privacy">Privacy</a>
+      </section>
+
+      <section class="social-links" aria-label="Social">
+        <a class="social-link" href="#x" aria-label="X (Twitter)">X</a>
+        <a class="social-link" href="#facebook" aria-label="Facebook">Facebook</a>
+        <a class="social-link" href="#instagram" aria-label="Instagram">Instagram</a>
+      </section>
+
+      <p class="copyright" id="copyright" data-year="2025">© redbus demo for teaching selectors</p>
+    </div>
+  </footer>
+
+  <!-- ================= EXTRA SANDBOX for Pseudo-class demos ================= -->
+  <section id="sandbox" class="sandbox" aria-labelledby="sandboxTitle">
+    <h2 id="sandboxTitle">Selector Sandbox</h2>
+
+    <!-- Pseudo-classes: :link, :visited, :hover, :focus, :active -->
+    <p class="links-row">
+      <a class="demo-link" href="#alpha" id="alphaLink">Alpha</a>
+      <a class="demo-link" href="#beta" id="betaLink">Beta</a>
+      <a class="demo-link" href="#gamma" id="gammaLink">Gamma</a>
+    </p>
+
+    <!-- Structural pseudo-classes: :first-child, :last-child, :nth-child, :only-child, :empty -->
+    <ul class="structural-list" id="structuralList">
+      <li class="structural-item" data-i="1">One</li>
+      <li class="structural-item" data-i="2">Two</li>
+      <li class="structural-item" data-i="3">Three</li>
+      <li class="structural-item" data-i="4">Four</li>
+      <li class="structural-item" data-i="5">Five</li>
+    </ul>
+
+    <!-- Pseudo-elements (::before/::after) — create content via CSS on these hooks -->
+    <div class="badge demo-badge" id="demoBadge" data-badge="NEW">Badge target</div>
+
+    <!-- Form state pseudo-classes: :required, :optional, :checked, :disabled, :read-only, :valid/:invalid -->
+    <form id="stateForm" class="state-form" action="#" method="post">
+      <label for="email">Email</label>
+      <input id="email" class="input" name="email" type="email" placeholder="you@example.com" required />
+
+      <label for="coupon">Coupon Code</label>
+      <input id="coupon" class="input" name="coupon" type="text" placeholder="SAVE150" />
+
+      <label><input id="agree" class="chk" type="checkbox" name="agree" value="yes" required /> I agree</label>
+
+      <button id="stateSubmit" class="btn" type="submit">Submit</button>
+      <button id="stateDisabled" class="btn" type="button" disabled>Disabled</button>
+    </form>
+
+    <!-- Adjacent & general siblings recap -->
+    <h3 class="sib-heading" id="sibHeading">Sibling Demos</h3>
+    <p class="sib-note" id="sibNote">Note right after heading (adjacent sibling)</p>
+    <p class="sib-info" id="sibInfo">Another paragraph after (general sibling)</p>
+  </section>
+
+  <!-- Back to top -->
+  <a class="back-to-top" id="backToTop" href="#top" aria-label="Back to top">↑</a>
+
+</body>
+</html>
