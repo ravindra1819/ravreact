@@ -1,0 +1,83 @@
+/* 
+
+Positioning in CSS : 
+
+    CSS positions is a concept helps us to place HTML elements in different positions on a web page.
+
+    There are several types of positioning in CSS:
+
+    1. Static Positioning
+       - Default positioning for all HTML elements.
+       - Elements are positioned according to the normal flow of the document.
+       
+    2. Relative Positioning
+       - Elements are positioned relative to their normal position.
+       - You can use the top, right, bottom, and left properties to adjust the position.
+
+    3. Absolute Positioning
+       - Elements are positioned relative to the nearest positioned ancestor (not static).
+       - If no positioned ancestor is found, it is positioned relative to the initial containing block (usually the viewport).
+
+
+    4. Fixed Positioning
+       - Elements are positioned relative to the viewport.
+       - They remain fixed in place even when the page is scrolled.
+
+    5. Sticky Positioning
+       - Elements are treated as relative until they reach a specified scroll position, then they become fixed.
+       - Useful for creating headers that stick to the top of the page when scrolling.
+*/
+
+
+.box{
+    height: 120px;
+    width: 120px;
+    background-color: orange;
+    border-radius: 10px;
+    margin-bottom: 5px;
+}
+
+.static{
+    background-color: aqua;
+    position: static;
+    top: 100px;
+    left : 100px;
+}
+
+.relative{
+    background-color: blue;
+    position: relative;
+    /* top: 200px;
+    left: 120px; */
+}
+
+section{
+    height: 300px;
+    width: 80%;
+    border: 1px solid black;
+    margin: 0px auto;
+    position: relative;
+    left : -100px;
+}
+
+.absolute{
+    background-color :thistle;
+    position: absolute;
+    top: 0;
+    left: 0;
+}
+
+.fixed{
+    background-color: red;
+    position: fixed;
+    top: 200px;
+    left: 200px;
+}
+
+.sticky{
+    background-color: slategrey;
+    position: sticky;
+    top: 150px;
+    left: 150px;
+
+}
