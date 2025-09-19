@@ -1,0 +1,57 @@
+/* 
+
+    Box Model : Margin, Border, Padding, Content
+
+    Content : Actual content of the box, where text and images appear (height, width)
+    Padding : outer space of content, inside of border
+    Border : border that goes around padding and content
+    Margin : outer space of border
+*/
+
+.container{
+    display: flex;
+    flex-wrap: wrap;
+}
+
+.card{
+    width: 280px;
+    border: 1px solid black;
+    padding: 10px;
+    border-radius: 10px;
+    margin: 10px;
+    flex-grow: 1;
+}
+
+.card img{
+    height: 150px;
+    width: 100%;
+    object-fit: cover;
+            border-radius: 10px;
+}
+
+.card h2{
+    margin: 5px 0px;
+    font-size: 24px;
+}
+
+.card p{
+    margin: 5px 0px;
+    font-size: 16px;
+}
+
+.card .productPrice{
+    font-size: 25px;
+}
+
+
+.card button{
+    width: 100%;
+    padding: 10px 20px;
+    font-size: 16px;
+    border: none;
+    background-color: blue;
+    color: white;
+        border-radius: 10px;
+}
+
+
