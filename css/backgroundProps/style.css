@@ -1,0 +1,251 @@
+
+*{
+    margin: 0;
+    padding: 0;
+    font-family:'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+}
+.container {
+    height: 300px;
+    width: 100%;
+    background-color: whitesmoke;
+    position: relative;
+    background-image: url("https://images.pexels.com/photos/5874965/pexels-photo-5874965.jpeg");
+    background-position: top;
+}
+
+.container .feedbackNote{
+    width: 70%;
+    height: 130px;
+        background: linear-gradient(Orange, white, Green);
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    border-radius: 10px;
+    text-align: center;
+    box-shadow: rgba(0, 0, 0, 0.35) 0px 5px 15px;
+}
+
+.feedbackNote h2{
+    margin-top: 30px;
+}
+
+.box{
+    height: 1600px;
+    width: 90%;
+    border: 10px dashed black;
+    margin: 10px auto;
+    background-image: url("https://static.toiimg.com/photo/80452572.cms");
+    background-repeat: no-repeat;
+    background-position: top; 
+    background-size: contain;
+    padding: 10px;
+    background-attachment: fixed;
+
+
+}
+
+
+
+/* 1. Hero Section */
+.hero {
+  height: 40vh;
+  background-image: url("https://images.pexels.com/photos/414171/pexels-photo-414171.jpeg");
+  background-size: cover;
+  background-position: center;
+  color: white;
+  display: flex;
+  justify-content: start;
+  align-items: center;
+  padding-left: 50px;
+  font-size: 30px;
+  position: relative;
+}
+
+/* .heroContent {
+  background-color: white;
+  padding: 20px;
+  border-radius: 10px;
+  width: 60%;
+  text-align: center;
+  margin: 0px auto;
+  position: relative;
+  top: -40px;
+  box-shadow: rgba(0, 0, 0, 0.35) 0px 5px 15px;
+} */
+
+/* 2. Blog with Pattern */
+.pattern {
+  padding: 50px 0;
+  background-color: #b6b4b4;
+  background-image: url("https://www.transparenttextures.com/patterns/asfalt-light.png");
+  background-repeat: repeat;
+}
+
+.pattern .content {
+  width: 60%;
+  margin: auto;
+  padding: 20px;
+  background: white;
+  border-radius: 10px;
+  text-align: center;
+}
+
+/* 3. Login with Fixed Background */
+.login {
+  height: 100vh;
+  background-image: url("https://images.pexels.com/photos/1103970/pexels-photo-1103970.jpeg");
+  background-size: cover;
+  background-attachment: fixed;
+  background-position: center;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.login-box {
+  width: 300px;
+  padding: 30px;
+  background: rgba(255, 255, 255, 0.85);
+  border-radius: 10px;
+  text-align: center;
+}
+
+.login-box input {
+  display: block;
+  width: 90%;
+  margin: 10px auto;
+  padding: 8px;
+  border: 1px solid #ccc;
+  border-radius: 5px;
+}
+
+.login-box button {
+  padding: 10px 20px;
+  border: none;
+  background: #333;
+  color: white;
+  font-size: 16px;
+  border-radius: 5px;
+  cursor: pointer;
+}
+
+/* 4. Gradient CTA */
+.cta {
+  padding: 100px;
+  text-align: center;
+  color: white;
+  background-image: linear-gradient(135deg, #ff7e5f, #feb47b);
+}
+
+.cta button {
+  margin-top: 20px;
+  padding: 10px 20px;
+  border: none;
+  background: white;
+  color: #ff7e5f;
+  font-size: 18px;
+  border-radius: 5px;
+  cursor: pointer;
+}
+
+/* 5. Product Card */
+.product {
+  padding: 60px 0;
+  display: flex;
+  justify-content: center;
+}
+
+.product-card {
+  width: 300px;
+  height: 200px;
+  padding: 20px;
+  background-color: #fff5e6;
+  background-image: url("https://cdn-icons-png.flaticon.com/512/2948/2948037.png");
+  background-repeat: no-repeat;
+  background-position: right 20px bottom 20px;
+  background-size: 60px;
+  border-radius: 10px;
+  border: 1px solid #ddd;
+}
+
+/* 6. Transparent Overlay Banner */
+.overlay {
+  height: 40vh;
+  background-image: url("https://images.pexels.com/photos/163771/road-mountains-sunset-path-163771.jpeg");
+  background-size: cover;
+  background-position: center;
+  position: relative;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.overlay::before {
+  content: "";
+  position: absolute;
+  inset: 0;
+  background: rgba(0,0,0,0.5);
+}
+
+.overlay-content {
+  position: relative;
+  color: white;
+  text-align: center;
+  z-index: 1;
+}
+
+/* 7. Parallax Scrolling */
+.parallax {
+  height: 60vh;
+  background-image: url("https://images.pexels.com/photos/21014/pexels-photo.jpg");
+  background-attachment: fixed;
+  background-position: center;
+  background-repeat: no-repeat;
+  background-size: cover;
+  color: white;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  font-size: 40px;
+  font-weight: bold;
+}
+
+/* 8. Multiple Backgrounds */
+.services {
+  height: 50vh;
+  background-image: 
+    url("https://cdn-icons-png.flaticon.com/512/61/61112.png"),
+    linear-gradient(to right, #4facfe, #00f2fe);
+  background-repeat: no-repeat;
+  background-position: right 40px bottom 40px, center;
+  background-size: 80px, cover;
+  color: white;
+  text-align: center;
+  padding-top: 100px;
+}
+
+/* 9. Gradient Overlay on Image */
+.gradient-overlay {
+  height: 50vh;
+  background-image: 
+    linear-gradient(rgba(0,0,0,0.5), rgba(0,0,0,0.5)),
+    url("https://images.pexels.com/photos/417074/pexels-photo-417074.jpeg");
+  background-size: cover;
+  background-position: center;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  color: white;
+  font-size: 35px;
+  text-align: center;
+}
+
+/* 10. Footer with Pattern */
+.footer {
+  padding: 30px;
+  text-align: center;
+  background-color: #222;
+  background-image: url("https://www.transparenttextures.com/patterns/cubes.png");
+  color: #fff;
+}
