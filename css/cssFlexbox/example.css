@@ -1,0 +1,200 @@
+/* General Reset */
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+  font-family: Arial, sans-serif;
+}
+
+section, footer {
+  padding: 40px;
+  border-bottom: 1px solid #ddd;
+}
+
+/* 1. Navbar */
+.navbar {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  background: #333;
+  color: white;
+  padding: 15px 40px;
+}
+
+.nav-links {
+  list-style: none;
+  display: flex;
+  gap: 20px;
+}
+
+.nav-links li {
+  cursor: pointer;
+}
+
+/* 2. Hero Split Layout */
+.hero-split {
+  display: flex;
+  align-items: center;
+  gap: 40px;
+}
+
+.hero-split .hero-text {
+  flex: 1;
+}
+
+.hero-split .hero-image img {
+  width: 100%;
+  max-width: 400px;
+  border-radius: 10px;
+}
+
+/* 3. Services Grid */
+.services-flex {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: space-around;
+  gap: 20px;
+}
+
+.service {
+  flex: 1;
+  padding: 20px;
+  background: #f4f4f4;
+  text-align: center;
+  border-radius: 10px;
+}
+
+/* 4. Two Column Blog */
+.blog {
+  display: flex;
+  gap: 20px;
+}
+
+.blog-left, .blog-right {
+  flex: 1;
+  background: #f9f9f9;
+  padding: 20px;
+  border-radius: 10px;
+}
+
+/* 5. Centered Card */
+.center-card {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  height: 200px;
+}
+
+.card {
+  background: #ff7e5f;
+  padding: 30px;
+  color: white;
+  border-radius: 10px;
+}
+
+/* 6. Sidebar Layout */
+.sidebar-layout {
+  display: flex;
+  gap: 20px;
+}
+
+.sidebar {
+  flex: 1;
+  background: #eee;
+  padding: 20px;
+}
+
+.main-content {
+  flex: 3;
+  background: #f4f4f4;
+  padding: 20px;
+}
+
+/* 7. Pricing Table */
+.pricing {
+  display: flex;
+  justify-content: center;
+  gap: 20px;
+}
+
+.price-card {
+  flex: 1;
+  padding: 40px;
+  background: #ddd;
+  text-align: center;
+  border-radius: 10px;
+}
+
+/* 8. Team Members */
+.team {
+  display: flex;
+  justify-content: space-evenly;
+  flex-wrap: wrap;
+  gap: 20px;
+}
+
+.member {
+  flex: 1 1 150px;
+  background: #e8f0fe;
+  padding: 20px;
+  text-align: center;
+  border-radius: 10px;
+}
+
+/* 9. Footer Links */
+.footer-flex {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  background: #222;
+  color: white;
+}
+
+.footer-links {
+  display: flex;
+  gap: 15px;
+}
+
+.footer-links a {
+  color: #ccc;
+  text-decoration: none;
+}
+
+/* 10. Responsive Card List */
+.card-list {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 20px;
+}
+
+.card-list .item {
+  flex: 1 1 calc(33% - 20px);
+  background: #f4f4f4;
+  padding: 20px;
+  border-radius: 10px;
+  text-align: center;
+}
+
+@media (max-width: 768px) {
+  .card-list .item {
+    flex: 1 1 calc(50% - 20px);
+  }
+}
+
+@media (max-width: 480px) {
+  .card-list .item {
+    flex: 1 1 100%;
+  }
+}
+
+/* 🔹 Media Query for Hero Section */
+@media (max-width: 600px) {
+  .hero-split {
+    flex-direction: column;
+    text-align: center;
+  }
+
+  .hero-split .hero-image {
+    order: -1;
+  }
+}
