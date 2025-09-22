@@ -1,0 +1,87 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>CSS Transitions & Transforms Demo</title>
+  <link rel="stylesheet" href="usage.css">
+</head>
+<body>
+
+  <!-- 1. Button Hover Grow -->
+  <section class="example">
+    <button class="btn-grow">Hover Me</button>
+  </section>
+
+  <!-- 2. Image Zoom on Hover -->
+  <section class="example">
+    <div class="img-zoom">
+      <img src="https://images.pexels.com/photos/346885/pexels-photo-346885.jpeg" alt="Travel">
+    </div>
+  </section>
+
+  <!-- 3. Card Lift Effect -->
+  <section class="example">
+    <div class="card-lift">I rise on hover</div>
+  </section>
+
+  <!-- 4. Rotate Icon -->
+  <section class="example">
+    <div class="rotate-icon">🔄</div>
+  </section>
+
+  <!-- 5. Flip Card -->
+  <section class="example flip-container">
+    <div class="flip-card">
+      <div class="flip-front">Front</div>
+      <div class="flip-back">Back</div>
+    </div>
+  </section>
+
+  <!-- 6. Navigation Underline -->
+  <section class="example nav-links">
+    <a href="#">Home</a>
+    <a href="#">Services</a>
+    <a href="#">Contact</a>
+  </section>
+
+  <!-- 7. Sidebar Slide In -->
+  <section class="example">
+    <button class="sidebar-btn">Open Sidebar</button>
+    <div class="sidebar">Sidebar Content</div>
+  </section>
+
+  <!-- 8. Skew Banner -->
+  <section class="example skew-banner">
+    <h2>Special Discount Today!</h2>
+  </section>
+
+  <!-- 9. Modal Scale -->
+  <section class="example">
+    <button class="modal-btn">Open Modal</button>
+    <div class="modal">
+      <div class="modal-content">Hello! I'm a modal.</div>
+    </div>
+  </section>
+
+  <!-- 10. Loading Spinner -->
+  <section class="example">
+    <div class="spinner"></div>
+  </section>
+
+<script>
+  // JS for Sidebar & Modal (realistic interactivity)
+  const sidebarBtn = document.querySelector('.sidebar-btn');
+  const sidebar = document.querySelector('.sidebar');
+  sidebarBtn.addEventListener('click', () => {
+    sidebar.classList.toggle('active');
+  });
+
+  const modalBtn = document.querySelector('.modal-btn');
+  const modal = document.querySelector('.modal');
+  modalBtn.addEventListener('click', () => {
+    modal.classList.toggle('active');
+  });
+</script>
+
+</body>
+</html>
