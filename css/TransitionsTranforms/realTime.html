@@ -1,0 +1,147 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Transforms & Transitions in Production</title>
+  <link rel="stylesheet" href="realTime.css">
+</head>
+<body>
+
+  <!-- 1. Navigation Menu Hover -->
+  <section>
+    <h2>1. Navigation Menu Hover</h2>
+    <nav class="nav-demo">
+      <a href="#">Home</a>
+      <a href="#">Products</a>
+      <a href="#">Services</a>
+      <a href="#">Contact</a>
+    </nav>
+  </section>
+
+  <!-- 2. Dropdown Menu -->
+  <section>
+    <h2>2. Dropdown Menu</h2>
+    <button class="drop-btn" onclick="toggleDropdown()">Toggle Menu</button>
+    <div class="dropdown" id="dropdown">
+      <p>Option 1</p>
+      <p>Option 2</p>
+      <p>Option 3</p>
+    </div>
+  </section>
+
+  <!-- 3. Product Card Zoom -->
+  <section>
+    <h2>3. Product Card Zoom</h2>
+    <div class="card">
+      <img src="https://images.pexels.com/photos/29173977/pexels-photo-29173977.jpeg" alt="Product">
+      <div class="info">
+        <h3>Product Name</h3>
+        <p>$25.00</p>
+        <button>Add to Cart</button>
+      </div>
+    </div>
+  </section>
+
+  <!-- 4. Modal Popup -->
+  <section>
+    <h2>4. Modal Popup</h2>
+    <button class="btn" onclick="openModal()">Open Modal</button>
+    <div class="modal" id="myModal">
+      <div class="modal-content">
+        <h2>Hello!</h2>
+        <p>This is a smooth animated modal.</p>
+        <button class="btn" onclick="closeModal()">Close</button>
+      </div>
+    </div>
+  </section>
+
+  <!-- 5. Button Hover Feedback -->
+  <section>
+    <h2>5. Button Hover Feedback</h2>
+    <button class="btn-animated">Hover Me</button>
+  </section>
+
+  <!-- 6. Hamburger Menu Animation -->
+  <section>
+    <h2>6. Hamburger Menu Animation</h2>
+    <div class="hamburger" onclick="toggleHamburger(this)">
+      <div class="line1"></div>
+      <div class="line2"></div>
+      <div class="line3"></div>
+    </div>
+  </section>
+
+  <!-- 7. Page Loader Spinner -->
+  <section>
+    <h2>7. Page Loader Spinner</h2>
+    <div class="spinner"></div>
+  </section>
+
+  <!-- 8. Card Flip Animation -->
+  <section>
+    <h2>8. Card Flip Animation</h2>
+    <div class="card-flip">
+      <div class="card-inner">
+        <div class="card-front">Front</div>
+        <div class="card-back">Back</div>
+      </div>
+    </div>
+  </section>
+
+  <!-- 9. Sticky Header Shrink -->
+  <section>
+    <h2>9. Sticky Header Shrink on Scroll</h2>
+    <header class="header" id="header">I am a Header</header>
+    <div class="content">
+      <p>Scroll down to see header shrink...</p>
+      <p style="margin-top:800px;">End of section</p>
+    </div>
+  </section>
+
+  <!-- 10. Progress Bar -->
+  <section>
+    <h2>10. Progress Bar Animation</h2>
+    <button onclick="startProgress()">Start Progress</button>
+    <div class="progress" id="progress"></div>
+  </section>
+
+<script>
+  // Dropdown
+  function toggleDropdown() {
+    document.getElementById("dropdown").classList.toggle("open");
+  }
+
+  // Modal
+  function openModal() {
+    document.getElementById("myModal").classList.add("active");
+  }
+  function closeModal() {
+    document.getElementById("myModal").classList.remove("active");
+  }
+
+  // Hamburger
+  function toggleHamburger(x) {
+    x.classList.toggle("open");
+  }
+
+  // Sticky Header
+  window.onscroll = function() {
+    const header = document.getElementById("header");
+    if (window.scrollY > 50) {
+      header.classList.add("shrink");
+    } else {
+      header.classList.remove("shrink");
+    }
+  };
+
+  // Progress Bar
+  function startProgress() {
+    const bar = document.getElementById("progress");
+    bar.classList.add("active");
+    setTimeout(() => bar.classList.remove("active"), 2500);
+  }
+</script>
+
+</body>
+</html>
