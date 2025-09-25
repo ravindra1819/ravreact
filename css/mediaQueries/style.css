@@ -1,0 +1,162 @@
+/* 
+===========================================
+📘 CSS MEDIA QUERIES – THEORY + BREAKPOINTS
+===========================================
+
+1. Definition:
+   Media queries allow designers to apply CSS 
+   styles conditionally, based on device or 
+   browser characteristics. They make websites 
+   responsive and user-friendly across devices.
+
+2. Purpose:
+   - Adjust layout, fonts, images, navigation.
+   - Provide consistent design across desktops, 
+     laptops, tablets, and smartphones.
+   - Improve usability and readability.
+
+3. How Media Queries Work:
+   - Act like conditional CSS rules.
+   - Example: "If screen width ≤ 768px, apply 
+     these styles."
+   - If condition = true → styles apply.
+   - If condition = false → ignored.
+
+4. Common Features:
+
+   - Width & Height → min-width, max-width.
+   - Orientation → portrait or landscape.
+
+5. Breakpoints (standard ranges):
+   - Extra Large: ≥1281px
+   - Large (Laptops/Desktops): 1025px–1280px
+   - Medium (Tablets/iPads): 768px–1024px
+   - Small (Mobiles Landscape): 481px–767px
+   - Extra Small (Mobiles Portrait): ≤480px
+
+6. Responsive Design Flow:
+   - Step 1: Start with base (default) styles.
+   - Step 2: Identify breakpoints (where design breaks).
+   - Step 3: Apply media queries to fix layouts.
+   - Step 4: Choose mobile-first or desktop-first.
+   - Step 5: Test on multiple devices.
+
+7. Best Practices:
+   - Use fewer breakpoints → only when design breaks.
+   - Prefer flexbox/grid → fewer manual adjustments.
+   - Always include meta viewport in HTML:
+       <meta name="viewport" content="width=device-width, initial-scale=1.0">
+   - Keep text/buttons touch-friendly for mobile.
+*/
+
+
+/* 
+===========================================
+📐 CLEANED-UP BREAKPOINTS (READY TO USE)
+===========================================
+*/
+
+/* 
+  Extra Large Devices – Desktops
+  Screens ≥1281px
+*/
+
+@media (min-width : 1281px) {
+   
+}
+
+
+/* 
+  Large Devices – Laptops & Desktops
+  Screens 1025px to 1280px
+*/
+@media (min-width: 1025px) and (max-width: 1280px) {
+   
+}
+
+
+/* 
+  Medium Devices – Tablets / iPads
+  Screens 768px to 1024px
+  (Covers both portrait & landscape by default)
+*/
+@media (min-width: 768px) and (max-width: 1024px) {
+  /* CSS for tablets */
+        .site-header{
+            flex-direction: column;
+            align-items: flex-start;
+        }
+
+        .main-navigation .nav-list{
+            flex-direction: column;
+           
+        }
+}
+
+
+/* 
+  Small Devices – Low Resolution Tablets & Mobiles (Landscape)
+  Screens 481px to 767px
+*/
+@media (min-width: 481px) and (max-width: 767px) {
+  /* CSS for small devices (landscape phones, small tablets) */
+          .site-header{
+            flex-direction: column;
+
+        }
+
+        .main-navigation .nav-list{
+            flex-direction: column;
+           
+        }
+}
+
+
+/* 
+  Extra Small Devices – Most Smartphones (Portrait)
+  Screens ≤480px
+*/
+@media (max-width: 480px) {
+  /* CSS for smartphones (portrait) */
+          .site-header{
+            flex-direction: column;
+
+        }
+
+        .main-navigation .nav-list{
+            flex-direction: column;
+           
+        }
+}
+
+*{
+    margin: 0;
+    padding: 0;
+}
+
+.site-header{
+    background-color: rgb(53, 52, 52);
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+
+.logo-container{
+    margin-left: 40px;
+}
+.logo-container img{
+    height: 55px;
+}
+
+.main-navigation .nav-list{
+    display: flex;
+    list-style: none;
+    gap: 0px 60px;
+    margin-right: 40px;
+}
+
+.main-navigation .nav-list .nav-item a{
+    text-decoration: none;
+    font-size: 20px;
+    color: white;
+}
