@@ -1,0 +1,38 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>About - External JavaScript</title>
+  <script src="https://cdn.jsdelivr.net/npm/@tailwindcss/browser@4"></script>
+</head>
+<body class="bg-gray-50 text-gray-800 font-sans p-6">
+
+  <h1 class="text-3xl font-bold text-center text-indigo-700 mb-6">About Page</h1>
+
+  <section class="p-6 bg-white rounded-xl shadow-md max-w-2xl mx-auto">
+    <h2 class="text-2xl font-semibold text-indigo-600 mb-3">External JavaScript</h2>
+    <p class="mb-4">
+      External JavaScript means writing JavaScript code in a **separate file** with a
+      <code class="bg-gray-200 px-1 rounded">.js</code> extension and linking it to the HTML 
+      using the <code class="bg-gray-200 px-1 rounded">&lt;script src="..."&gt;</code> tag.
+      <br><br>
+      ✅ It is considered the **best practice** because:
+      <ul class="list-disc list-inside mt-2">
+        <li>Keeps HTML, CSS, and JavaScript separate.</li>
+        <li>Code can be reused across multiple pages.</li>
+        <li>Improves maintainability and readability.</li>
+        <li>External files can be cached by the browser for better performance.</li>
+      </ul>
+    </p>
+
+    <button id="clickBtn"
+      class="px-4 py-2 bg-red-600 text-white rounded-lg hover:bg-red-700 transition">
+      Click Me (External JS)
+    </button>
+  </section>
+
+  <!-- Linking external JavaScript -->
+  <script src="./app.js"></script>
+</body>
+</html>
