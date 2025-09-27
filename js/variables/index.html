@@ -1,0 +1,94 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>JavaScript Variables</title>
+  <script src="https://cdn.jsdelivr.net/npm/@tailwindcss/browser@4"></script>
+</head>
+<body class="bg-gray-50 text-gray-800 font-sans p-6">
+
+  <h1 class="text-3xl font-bold text-center text-indigo-700 mb-6">JavaScript Variables</h1>
+
+  <!-- What are Variables -->
+  <section class="p-6 bg-white rounded-xl shadow-md mb-10">
+    <h2 class="text-2xl font-semibold text-indigo-600 mb-3">What are Variables?</h2>
+    <p class="mb-4">
+      A <strong>variable</strong> is a container used to store data values in JavaScript.  
+      Think of it like a <span class="font-semibold">box</span> where you can keep numbers, strings, objects, or other data.
+    </p>
+    <p class="mb-2">JavaScript provides 3 keywords to declare variables:</p>
+    <ul class="list-disc list-inside space-y-1">
+      <li><code class="bg-gray-200 px-1 rounded">var</code> → Function-scoped (old way, ES5).</li>
+      <li><code class="bg-gray-200 px-1 rounded">let</code> → Block-scoped (introduced in ES6).</li>
+      <li><code class="bg-gray-200 px-1 rounded">const</code> → Block-scoped, cannot be reassigned.</li>
+    </ul>
+  </section>
+
+  <!-- Difference Table -->
+  <section class="p-6 bg-white rounded-xl shadow-md mb-10">
+    <h2 class="text-2xl font-semibold text-indigo-600 mb-3">Difference Between var, let, and const</h2>
+    <div class="overflow-x-auto">
+      <table class="min-w-full border border-gray-300 rounded-lg">
+        <thead class="bg-indigo-100">
+          <tr>
+            <th class="border px-4 py-2">Feature</th>
+            <th class="border px-4 py-2">var</th>
+            <th class="border px-4 py-2">let</th>
+            <th class="border px-4 py-2">const</th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr class="hover:bg-gray-50">
+            <td class="border px-4 py-2">Scope</td>
+            <td class="border px-4 py-2">Function</td>
+            <td class="border px-4 py-2">Block</td>
+            <td class="border px-4 py-2">Block</td>
+          </tr>
+          <tr class="hover:bg-gray-50">
+            <td class="border px-4 py-2">Redeclaration</td>
+            <td class="border px-4 py-2">✅ Allowed</td>
+            <td class="border px-4 py-2">❌ Not Allowed</td>
+            <td class="border px-4 py-2">❌ Not Allowed</td>
+          </tr>
+          <tr class="hover:bg-gray-50">
+            <td class="border px-4 py-2">Re-initialization</td>
+            <td class="border px-4 py-2">✅ Allowed</td>
+            <td class="border px-4 py-2">✅ Allowed</td>
+            <td class="border px-4 py-2">❌ Not Allowed</td>
+          </tr>
+          <tr class="hover:bg-gray-50">
+            <td class="border px-4 py-2">Hoisting</td>
+            <td class="border px-4 py-2">✅ Hoisted (undefined)</td>
+            <td class="border px-4 py-2">❌ Hoisted (TDZ)</td>
+            <td class="border px-4 py-2">❌ Hoisted (TDZ)</td>
+          </tr>
+          <tr class="hover:bg-gray-50">
+            <td class="border px-4 py-2">Best Use</td>
+            <td class="border px-4 py-2">Legacy code</td>
+            <td class="border px-4 py-2">General use</td>
+            <td class="border px-4 py-2">Constants / fixed values</td>
+          </tr>
+        </tbody>
+      </table>
+    </div>
+  </section>
+
+  <!-- Real Example -->
+  <section class="p-6 bg-white rounded-xl shadow-md mb-10">
+    <h2 class="text-2xl font-semibold text-indigo-600 mb-3">Practical Example: Employee Pay Slip</h2>
+    <p class="mb-4">
+      Variables are very useful in real-world applications.  
+      Example → calculating an <strong>Employee Pay Slip</strong> using variables in JavaScript.  
+      Open the <span class="font-mono bg-gray-200 px-1 rounded">console</span> to see the result.
+    </p>
+    <button id="showSlip"
+      class="px-4 py-2 bg-green-600 text-white rounded-lg hover:bg-green-700 transition">
+      Show Pay Slip in Console
+    </button>
+  </section>
+
+  <!-- Link to JS -->
+  <script src="./app.js"></script>
+</body>
+</html>
