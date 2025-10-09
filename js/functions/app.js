@@ -65,5 +65,69 @@ box.classList.toggle("added");
 box.classList.toggle("added");
 
 
+// Function with parameters :
 
+// Analytics Event Tracker :
+
+function trackEvent(eventName){
+    console.log(`Event : ${eventName} captured at ${new Date().toISOString()}`);
+}
+
+trackEvent("LOGIN_SUCCESS");
+trackEvent("LOGIN_FAILED");
+
+
+
+// Function with Default Parameters :
+
+// API pagination :
+
+function getUsers(page=1, limit = 10){
+  console.log(`Fetching ${limit} users from page ${page}`);
+}
+
+getUsers();   // 1st page, 10 users
+getUsers(2, 5); // 2nd page, 5 users
+
+
+// IIFE example :
+
+// App initialization :
+
+  (function(){
+    console.log(`App initialised`);
+  })();
+
+// Initial Confirguration :
+
+  (
+    function(page, limit){
+      const API_URL = `https://api.server.com/${page}/${limit}`;
+      console.log(`Configured : ${API_URL}`);
+    }
+  )(1, 20);
+
+
+// Callback example with registration and sendEmail
+
+function registerUser(user, cb){
+    console.log(`Registering User.........`);
+    cb(user);
+}
+
+function sendEmail(user){
+  console.log(`Welcome ${user.name}`);
+  console.log(`Email sent SuccessFully`);
+}
+
+
+registerUser({name : "Vamsee", email : "vamsee@gmail.com"}, sendEmail );
+
+// Arrow function examples :
+
+const calculateGST = (amount, percentage) => console.log(amount * (percentage/100));
+
+
+calculateGST(3000, 18);
+calculateGST(3000, 2.5);
 
