@@ -1,0 +1,18 @@
+#teamContainer{
+    width: 80%;
+    margin: 0 auto;
+    /* background-color: rgb(232, 234, 235); */
+    padding: 10px;
+    display: flex;
+    flex-wrap: wrap;
+    gap: 10px;
+    justify-content: center;
+}
+
+#teamContainer .userCard{
+    width: 280px;
+    box-shadow: rgba(0, 0, 0, 0.24) 0px 3px 8px;
+    text-align: center;
+    flex-grow: 1;
+    border-radius: 10px;
+}
