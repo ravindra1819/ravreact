@@ -1,0 +1,38 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Modular eCommerce App</title>
+  <link rel="stylesheet" href="./style.css" />
+</head>
+<body>
+  <header>
+    <h1>🛍️ Modular eCommerce</h1>
+    <div id="authSection">
+      <button id="loginBtn">Login</button>
+      <button id="registerBtn">Register</button>
+    </div>
+    <input type="text" id="searchInput" placeholder="Search products..." />
+    <select id="categoryFilter">
+      <option value="all">All</option>
+      <option value="electronics">Electronics</option>
+      <option value="fashion">Fashion</option>
+    </select>
+    <button id="viewCartBtn">🛒 Cart (<span id="cartCount">0</span>)</button>
+  </header>
+
+  <main id="productContainer"></main>
+
+  <div id="cartModal" class="modal">
+    <div class="modal-content">
+      <h2>Your Cart</h2>
+      <ul id="cartItems"></ul>
+      <button id="closeCart">Close</button>
+    </div>
+  </div>
+
+  <!-- Main module entry -->
+  <script type="module" src="./js/main.js"></script>
+</body>
+</html>
