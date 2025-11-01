@@ -1,0 +1,165 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>JavaScript Event Loop — Animated Demo (Slower Execution)</title>
+  <style>
+    :root{
+      --bg:#0f1220; --panel:#151934; --muted:#1d2247; --text:#e7e9ff; --sub:#b9c0ff;
+      --chip:#4f46e5; --chip2:#06b6d4; --chip3:#f59e0b; --chip4:#10b981; --chip5:#ef4444;
+      --ring:#7c3aed; --accent:#22d3ee; --ok:#34d399;
+    }
+    *{box-sizing:border-box}
+    body{margin:0;background:radial-gradient(1200px 600px at 70% -10%, #1a1f44 0%, #0f1220 60%);color:var(--text);font:500 16px/1.45 ui-sans-serif,system-ui,-apple-system,Segoe UI,Roboto,Ubuntu,"Helvetica Neue",Arial}
+    h1,h2{margin:0 0 .5rem}
+    a{color:var(--accent)}
+    .wrap{max-width:1200px;margin:24px auto;padding:0 16px}
+    .topbar{display:flex;gap:12px;align-items:center;flex-wrap:wrap}
+    .btn{background:linear-gradient(180deg,#2a2f66,#1c2150);border:1px solid #3742a8;color:var(--text);padding:10px 14px;border-radius:14px;cursor:pointer;transition:.2s transform,.2s box-shadow;white-space:nowrap}
+    .btn:hover{transform:translateY(-1px);box-shadow:0 6px 18px rgba(34,211,238,.15)}
+    .btn:active{transform:translateY(0)}
+    .btn.small{padding:6px 10px;border-radius:10px;font-size:13px}
+    .pill{padding:4px 10px;border-radius:999px;background:#19224e;border:1px solid #2a3aa7;color:#cdd4ff;font-size:12px}
+    .grid{display:grid;grid-template-columns:1.1fr .9fr .9fr .9fr;gap:16px;margin-top:16px}
+    .col{background:linear-gradient(180deg,#14193b,#131736);border:1px solid #2c3174;border-radius:18px;overflow:hidden;position:relative}
+    .col h2{font-size:14px;letter-spacing:.2px;padding:10px 12px;background:#111538;border-bottom:1px solid #2a2e6b;color:#cdd4ff;display:flex;align-items:center;gap:8px}
+    .col .body{min-height:260px;padding:12px;display:flex;flex-direction:column;gap:8px}
+    .lane{display:flex;flex-direction:column;gap:8px;min-height:220px;border:1px dashed #2a2f66;border-radius:12px;padding:10px}
+    .chip{border-radius:12px;padding:8px 10px;font-size:13px;display:flex;align-items:center;gap:8px;border:1px solid rgba(255,255,255,.12);
+      background:linear-gradient(180deg,rgba(255,255,255,.06),rgba(255,255,255,.03));
+      position:relative;transform:translateZ(0);transition:transform .25s ease, box-shadow .25s ease, opacity .25s ease}
+    .chip .dot{width:8px;height:8px;border-radius:999px}
+    .chip.sync {--c:var(--chip5)}
+    .chip.timeout{--c:var(--chip3)}
+    .chip.promise{--c:var(--chip2)}
+    .chip.micro{--c:var(--chip2)}
+    .chip.macro{--c:var(--chip3)}
+    .chip.fetch{--c:var(--chip4)}
+    .chip .dot{background:var(--c)}
+    .chip .meta{color:#cbd5ff80;font-size:12px}
+    .chip.move{box-shadow:0 12px 30px rgba(124,58,237,.25);transform:translateY(-2px)}
+    .stack-frames{display:flex;flex-direction:column-reverse;gap:8px;min-height:220px;border:1px dashed #2a2f66;border-radius:12px;padding:10px}
+    .frame{background:linear-gradient(180deg,#20265a,#1a1f4a);border:1px solid #3b49c2;color:#e9ecff;border-radius:12px;padding:8px 10px;display:flex;justify-content:space-between;align-items:center;font-size:13px}
+    .frame .progress{height:6px;background:#0f1537;border:1px solid #3341ad;border-radius:999px;overflow:hidden;width:45%}
+    .frame .progress>i{display:block;height:100%;background:linear-gradient(90deg,var(--ring),#22d3ee);width:0}
+    .loop{position:fixed;right:22px;bottom:22px;background:radial-gradient(50% 60% at 50% 50%, #1d1f57 0%, #13163e 60%);border:1px solid #2f3485;border-radius:18px;padding:12px 14px;display:flex;align-items:center;gap:10px}
+    .loop .dot{width:10px;height:10px;border-radius:50%;background:var(--ring);box-shadow:0 0 0 0 rgba(124,58,237,.6);animation:pulse 2s infinite}
+    @keyframes pulse{0%{box-shadow:0 0 0 0 rgba(124,58,237,.6)}70%{box-shadow:0 0 0 18px rgba(124,58,237,0)}100%{box-shadow:0 0 0 0 rgba(124,58,237,0)}}
+    .legend{display:flex;gap:8px;flex-wrap:wrap}
+    .legend .pill{display:flex;align-items:center;gap:8px}
+    .k{width:10px;height:10px;border-radius:50%}
+    .controls{display:flex;align-items:center;gap:10px;margin-left:auto}
+    input[type="range"]{accent-color:var(--accent)}
+    .log{height:140px;overflow:auto;background:#0e1231;border:1px solid #29339d;border-radius:12px;padding:10px;font-size:13px}
+    .log b{color:#fff}
+    .muted{color:#cbd5ff99}
+  </style>
+</head>
+<body>
+  <div class="wrap">
+    <h1>JavaScript Event Loop — Visual Simulator</h1>
+    <div class="topbar">
+      <button class="btn" id="btnSync">Run sync work (500ms)</button>
+      <button class="btn" id="btnTimeout">setTimeout(0)</button>
+      <button class="btn" id="btnPromise">Promise.then(...)</button>
+      <button class="btn" id="btnMicro">queueMicrotask(...)</button>
+      <button class="btn" id="btnFetch">fetch("/api") (simulated)</button>
+
+      <span class="pill">Microtasks before Macrotasks</span>
+      <div class="controls">
+        <button class="btn small" id="play">▶ Play</button>
+        <button class="btn small" id="pause">⏸ Pause</button>
+        <button class="btn small" id="step">⏭ Step</button>
+        <button class="btn small" id="reset">♻ Reset</button>
+        <label class="pill">Speed <input id="speed" type="range" min="0.2" max="2" step="0.1" value="0.5"/></label>
+      </div>
+    </div>
+
+    <div class="legend" style="margin-top:10px">
+      <span class="pill"><i class="k" style="background:var(--chip5)"></i>Sync Stack Frame</span>
+      <span class="pill"><i class="k" style="background:var(--chip3)"></i>Macrotask (setTimeout, DOM, fetch)</span>
+      <span class="pill"><i class="k" style="background:var(--chip2)"></i>Microtask (Promise.then, queueMicrotask)</span>
+      <span class="pill"><i class="k" style="background:var(--chip4)"></i>Web API (timer/fetch)</span>
+    </div>
+
+    <div class="grid">
+      <div class="col"><h2>Call Stack</h2><div class="body"><div id="stack" class="stack-frames"></div></div></div>
+      <div class="col"><h2>Web APIs</h2><div class="body"><div id="apis" class="lane"></div></div></div>
+      <div class="col"><h2>Microtask Queue</h2><div class="body"><div id="micro" class="lane"></div></div></div>
+      <div class="col"><h2>Macrotask Queue</h2><div class="body"><div id="macro" class="lane"></div></div></div>
+    </div>
+
+    <div style="margin-top:16px">
+      <h2>Event Log</h2>
+      <div id="log" class="log"></div>
+    </div>
+  </div>
+
+  <div class="loop"><div class="dot"></div><div><b>Event Loop</b><div id="loopState" class="muted">idle</div></div></div>
+
+  <script>
+  const ui = {
+    stack: document.getElementById('stack'),
+    apis: document.getElementById('apis'),
+    micro: document.getElementById('micro'),
+    macro: document.getElementById('macro'),
+    log: document.getElementById('log'),
+    loopState: document.getElementById('loopState'),
+    speed: document.getElementById('speed')
+  };
+
+  let t=0, running=false, stepOnce=false, tickHandle=null;
+  let dtBase=20; // ⚙️ Slower simulation tick (was 50ms)
+  const callStack=[], webAPIs=[], microQ=[], macroQ=[];
+  let nextId=1;
+
+  function log(msg){ ui.log.innerHTML = `<div><span class='muted'>[${Math.round(t)}ms]</span> ${msg}</div>` + ui.log.innerHTML; }
+  function makeChip(task){ const el=document.createElement('div'); el.className=`chip ${task.type}`; el.innerHTML=`<span class='dot'></span><span>${task.label}</span> <span class='meta'>#${task.id}</span>`; return el; }
+
+  function render(){
+    ui.stack.innerHTML=''; callStack.forEach(fr=>{ const f=document.createElement('div'); f.className='frame'; f.innerHTML=`<span>${fr.label}</span><span class='progress'><i style='width:${100 - fr.remain/fr.total*100}%'></i></span>`; ui.stack.appendChild(f); });
+    ui.apis.innerHTML=''; webAPIs.forEach(a=>ui.apis.appendChild(makeChip(a)));
+    ui.micro.innerHTML=''; microQ.forEach(q=>ui.micro.appendChild(makeChip(q)));
+    ui.macro.innerHTML=''; macroQ.forEach(q=>ui.macro.appendChild(makeChip(q)));
+  }
+
+  function enqueueMicro(label){ microQ.push({id:nextId++,label,type:'micro'}); render(); log(`Enqueued microtask: ${label}`); }
+  function enqueueMacro(label){ macroQ.push({id:nextId++,label,type:'macro'}); render(); log(`Enqueued macrotask: ${label}`); }
+  function addWebAPI(label,ms,after){ webAPIs.push({id:nextId++,label,type:'fetch',remain:ms,after}); render(); log(`Started Web API: ${label} for ${ms}ms`); }
+  function pushSync(label,ms){ callStack.push({id:nextId++,label,type:'sync',remain:ms,total:ms}); render(); log(`Pushed sync work: ${label}`); }
+
+  function takeFromQueues(){
+    if(callStack.length>0)return;
+    if(microQ.length>0){ const m=microQ.shift(); callStack.push({id:m.id,label:m.label,type:'promise',remain:600,total:600}); ui.loopState.textContent='Running microtask'; log(`Event Loop: microtask ${m.label}`); render(); return;}
+    if(macroQ.length>0){ const m=macroQ.shift(); callStack.push({id:m.id,label:m.label,type:'timeout',remain:800,total:800}); ui.loopState.textContent='Running macrotask'; log(`Event Loop: macrotask ${m.label}`); render();}
+  }
+
+  function tick(simDT){
+    const speed=parseFloat(ui.speed.value);
+    const dt=simDT*speed; t+=dt;
+    for(let i=webAPIs.length-1;i>=0;i--){const w=webAPIs[i]; w.remain-=dt; if(w.remain<=0){webAPIs.splice(i,1); w.after==='micro'?enqueueMicro(w.label+' → then(...)'):enqueueMacro(w.label+' → callback');}}
+    if(callStack.length>0){const top=callStack[callStack.length-1]; top.remain-=dt; if(top.remain<=0){callStack.pop(); log(`Completed: ${top.label}`);} render();}
+    else{ui.loopState.textContent='idle'; takeFromQueues();}
+  }
+
+  let lastReal=performance.now();
+  function raf(now){const realDT=now-lastReal; lastReal=now; if(running||stepOnce){tick(dtBase); stepOnce=false;} tickHandle=requestAnimationFrame(raf);}
+  tickHandle=requestAnimationFrame(raf);
+
+  document.getElementById('btnSync').onclick=()=>pushSync('main() work',800);
+  document.getElementById('btnTimeout').onclick=()=>addWebAPI('setTimeout(0)',1500,'macro');
+  document.getElementById('btnPromise').onclick=()=>enqueueMicro('Promise.then(...)');
+  document.getElementById('btnMicro').onclick=()=>enqueueMicro('queueMicrotask(...)');
+  document.getElementById('btnFetch').onclick=()=>addWebAPI('fetch(\"/api\")',2500,'macro');
+
+  document.getElementById('play').onclick=()=>{running=true;log('<b>▶ Play</b>');};
+  document.getElementById('pause').onclick=()=>{running=false;log('<b>⏸ Pause</b>');};
+  document.getElementById('step').onclick=()=>{stepOnce=true;log('<b>Step</b>');};
+  document.getElementById('reset').onclick=()=>{callStack.length=0;webAPIs.length=0;microQ.length=0;macroQ.length=0;nextId=1;t=0;render();ui.log.innerHTML='';log('Reset');};
+
+  render();
+  log('Welcome! Try setTimeout + Promise.then + ▶ Play to see slower event loop flow.');
+  </script>
+</body>
+</html>
